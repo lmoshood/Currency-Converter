@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Web;
+using System.Dynamic;
 
 //https://docs.openexchangerates.org/docs/currencies-json
+//Use expandoObject to dynamically create Object + attributes
 
 namespace Currency {
     public struct Currencies {
@@ -37,6 +39,7 @@ namespace Currency {
             Console.WriteLine(baseAmmount);
             Console.WriteLine(baseAmmount.Length);
             return int.Parse(baseAmmount.Substring(5,baseAmmount.Length - 1)) * int.Parse(ammount);
+            
         }
     }
 }
