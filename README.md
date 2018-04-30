@@ -1,4 +1,4 @@
-# Currency-Statistics
+# Currency-Converter
 
 A small currency converter
 
