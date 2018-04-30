@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Currency {
     public class Menu {
-        public Tuple<string,string,string> MenuStart() {
+        public Tuple<string, string, string> Choices() {
             Console.WriteLine("Currency Coverter");
             Console.WriteLine("1. Ammount: ");
             var ammount = Console.ReadLine();

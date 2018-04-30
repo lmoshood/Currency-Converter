@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Web;
 using System.Dynamic;
-
-//https://docs.openexchangerates.org/docs/currencies-json
-//Use expandoObject to dynamically create Object + attributes
+using System.Globalization;
 
 namespace Currency {
     public struct Currencies {
@@ -35,11 +33,11 @@ namespace Currency {
             }
             return Task.FromException(new Exception("Something went wrong..")).ToString();
         }
-        public int ConvertBaseToGivenAmmount(string baseAmmount, string ammount) {
-            Console.WriteLine(baseAmmount);
-            Console.WriteLine(baseAmmount.Length);
-            return int.Parse(baseAmmount.Substring(5,baseAmmount.Length - 1)) * int.Parse(ammount);
-            
+        public decimal ConvertBaseToGivenAmmount(string baseAmmount, string ammount, Tuple<string,string,string> choices) {
+            var doubleDotIndex = baseAmmount.IndexOf(':') + 1;
+            var baseAmmountSubString = baseAmmount.Substring(doubleDotIndex,baseAmmount.Length - doubleDotIndex - 1);
+            var BasedAmountParsed = Decimal.Parse(baseAmmountSubString,new NumberFormatInfo { NumberDecimalSeparator = "." });
+            return Decimal.Round(BasedAmountParsed * Decimal.Parse(ammount),2);        
         }
     }
 }
