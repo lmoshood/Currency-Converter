@@ -6,3 +6,9 @@ A small currency converter
 
 # How to start
 Run the client file
+
+# Api used
+https://free.currencyconverterapi.com/
+
+# Type
+Console application
