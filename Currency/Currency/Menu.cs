@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Currency {
     public class Menu {
@@ -11,6 +12,12 @@ namespace Currency {
             Console.WriteLine("3. Convert to: ");
             var to = Console.ReadLine();
             return new Tuple<string, string, string>(from, to, ammount);
+        }
+        public void HandleError(string baseAmmount) {
+            var baseAmountConverted = baseAmmount.Trim('{', '}');
+            if (baseAmountConverted.Length <= 0) {
+                throw new Exception("You have not entered the right valuta");
+            }
         }
     }
 }
